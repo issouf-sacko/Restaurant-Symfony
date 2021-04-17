@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Categorie
  *
  * @ORM\Table(name="categorie")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
  */
 class Categorie
 {
@@ -27,6 +27,23 @@ class Categorie
      * @ORM\Column(name="libelle", type="string", length=50, nullable=false)
      */
     private $libelle;
+
+    public function getIdcat(): ?int
+    {
+        return $this->idcat;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
 
 
 }

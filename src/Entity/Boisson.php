@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Boisson
  *
  * @ORM\Table(name="boisson", indexes={@ORM\Index(name="I_FK_boisson_type", columns={"idType"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\BoissonRepository")
  */
 class Boisson
 {
@@ -47,6 +47,54 @@ class Boisson
      * })
      */
     private $idtype;
+
+    public function getQuantite(): ?string
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(?string $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getIdprod(): ?Produit
+    {
+        return $this->idprod;
+    }
+
+    public function setIdprod(?Produit $idprod): self
+    {
+        $this->idprod = $idprod;
+
+        return $this;
+    }
+
+    public function getIdtype(): ?Type
+    {
+        return $this->idtype;
+    }
+
+    public function setIdtype(?Type $idtype): self
+    {
+        $this->idtype = $idtype;
+
+        return $this;
+    }
 
 
 }

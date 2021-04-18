@@ -42,46 +42,5 @@ class Users
      */
     private $role;
 
-    public function getIdUser(): ?int
-    {
-        return $this->idUser;
-    }
-
-    public function getNomutilisateur(): ?string
-    {
-        return $this->nomutilisateur;
-    }
-
-    public function setNomutilisateur(?string $nomutilisateur): self
-    {
-        $this->nomutilisateur = $nomutilisateur;
-
-        return $this;
-    }
-
-    public function getMotdepasse(): ?string
-    {
-        return $this->motdepasse;
-    }
-
-    public function setMotdepasse(?string $motdepasse): self
-    {
-        $this->motdepasse = $motdepasse;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(?string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
 
 }

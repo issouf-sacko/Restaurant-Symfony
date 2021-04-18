@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Plat
  *
  * @ORM\Table(name="plat", indexes={@ORM\Index(name="I_FK_PLAT_categorie", columns={"idCat"})})
- * @ORM\Entity(repositoryClass="App\Repository\PlatRepository")
+ * @ORM\Entity
  */
 class Plat
 {
@@ -40,42 +40,6 @@ class Plat
      * })
      */
     private $idprod;
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getIdcat(): ?Categorie
-    {
-        return $this->idcat;
-    }
-
-    public function setIdcat(?Categorie $idcat): self
-    {
-        $this->idcat = $idcat;
-
-        return $this;
-    }
-
-    public function getIdprod(): ?Produit
-    {
-        return $this->idprod;
-    }
-
-    public function setIdprod(?Produit $idprod): self
-    {
-        $this->idprod = $idprod;
-
-        return $this;
-    }
 
 
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Client
  *
  * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
+ * @ORM\Entity
  */
 class Client
 {
@@ -30,30 +30,6 @@ class Client
      * })
      */
     private $idPers;
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
-    public function getIdPers(): ?Personne
-    {
-        return $this->idPers;
-    }
-
-    public function setIdPers(?Personne $idPers): self
-    {
-        $this->idPers = $idPers;
-
-        return $this;
-    }
 
 
 }

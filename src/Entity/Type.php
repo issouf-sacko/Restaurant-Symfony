@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Type
  *
  * @ORM\Table(name="type")
- * @ORM\Entity(repositoryClass="App\Repository\TypeRepository")
+ * @ORM\Entity
  */
 class Type
 {
@@ -27,23 +27,6 @@ class Type
      * @ORM\Column(name="libelle", type="string", length=25, nullable=false)
      */
     private $libelle;
-
-    public function getIdtype(): ?int
-    {
-        return $this->idtype;
-    }
-
-    public function getLibelle(): ?string
-    {
-        return $this->libelle;
-    }
-
-    public function setLibelle(string $libelle): self
-    {
-        $this->libelle = $libelle;
-
-        return $this;
-    }
 
 
 }

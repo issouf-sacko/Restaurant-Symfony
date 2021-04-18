@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Produit
  *
  * @ORM\Table(name="produit")
- * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
+ * @ORM\Entity
  */
 class Produit
 {
@@ -58,59 +56,6 @@ class Produit
     public function __construct()
     {
         $this->idcmd = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function getIdprod(): ?int
-    {
-        return $this->idprod;
-    }
-
-    public function getLibelle(): ?string
-    {
-        return $this->libelle;
-    }
-
-    public function setLibelle(?string $libelle): self
-    {
-        $this->libelle = $libelle;
-
-        return $this;
-    }
-
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?string $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getIdcmd(): Collection
-    {
-        return $this->idcmd;
-    }
-
-    public function addIdcmd(Commande $idcmd): self
-    {
-        if (!$this->idcmd->contains($idcmd)) {
-            $this->idcmd[] = $idcmd;
-        }
-
-        return $this;
-    }
-
-    public function removeIdcmd(Commande $idcmd): self
-    {
-        $this->idcmd->removeElement($idcmd);
-
-        return $this;
     }
 
 }

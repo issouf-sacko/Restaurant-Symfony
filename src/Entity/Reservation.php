@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reservation
  *
- * @ORM\Table(name="reservation", indexes={@ORM\Index(name="I_FK_RESERVATION_client", columns={"idClient"})})
- * @ORM\Entity(repositoryClass="App\Repository\ReservationRepository")
+ * @ORM\Table(name="reservation", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="I_FK_RESERVATION_client", columns={"idClient"})})
+ * @ORM\Entity
  */
 class Reservation
 {
@@ -43,6 +43,13 @@ class Reservation
     private $heurearrive;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=70, nullable=false)
+     */
+    private $email;
+
+    /**
      * @var \Client
      *
      * @ORM\ManyToOne(targetEntity="Client")
@@ -51,59 +58,6 @@ class Reservation
      * })
      */
     private $idclient;
-
-    public function getIdreserv(): ?int
-    {
-        return $this->idreserv;
-    }
-
-    public function getDatereserv(): ?\DateTimeInterface
-    {
-        return $this->datereserv;
-    }
-
-    public function setDatereserv(\DateTimeInterface $datereserv): self
-    {
-        $this->datereserv = $datereserv;
-
-        return $this;
-    }
-
-    public function getNbcouvert(): ?int
-    {
-        return $this->nbcouvert;
-    }
-
-    public function setNbcouvert(int $nbcouvert): self
-    {
-        $this->nbcouvert = $nbcouvert;
-
-        return $this;
-    }
-
-    public function getHeurearrive(): ?\DateTimeInterface
-    {
-        return $this->heurearrive;
-    }
-
-    public function setHeurearrive(\DateTimeInterface $heurearrive): self
-    {
-        $this->heurearrive = $heurearrive;
-
-        return $this;
-    }
-
-    public function getIdclient(): ?Client
-    {
-        return $this->idclient;
-    }
-
-    public function setIdclient(?Client $idclient): self
-    {
-        $this->idclient = $idclient;
-
-        return $this;
-    }
 
 
 }

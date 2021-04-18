@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,62 @@ class Commande
     public function __construct()
     {
         $this->idprod = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getIdcmd(): ?int
+    {
+        return $this->idcmd;
+    }
+
+    public function getDatecmd(): ?\DateTimeInterface
+    {
+        return $this->datecmd;
+    }
+
+    public function setDatecmd(\DateTimeInterface $datecmd): self
+    {
+        $this->datecmd = $datecmd;
+
+        return $this;
+    }
+
+    public function getIdClient(): ?Client
+    {
+        return $this->idClient;
+    }
+
+    public function setIdClient(?Client $idClient): self
+    {
+        $this->idClient = $idClient;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Produit[]
+     */
+    public function getIdprod(): Collection
+    {
+        return $this->idprod;
+    }
+
+    public function addIdprod(Produit $idprod): self
+    {
+        if (!$this->idprod->contains($idprod)) {
+            $this->idprod[] = $idprod;
+            $idprod->addIdcmd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdprod(Produit $idprod): self
+    {
+        if ($this->idprod->removeElement($idprod)) {
+            $idprod->removeIdcmd($this);
+        }
+
+        return $this;
     }
 
 }

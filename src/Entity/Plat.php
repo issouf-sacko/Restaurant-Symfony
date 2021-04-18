@@ -41,5 +41,41 @@ class Plat
      */
     private $idprod;
 
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIdcat(): ?Categorie
+    {
+        return $this->idcat;
+    }
+
+    public function setIdcat(?Categorie $idcat): self
+    {
+        $this->idcat = $idcat;
+
+        return $this;
+    }
+
+    public function getIdprod(): ?Produit
+    {
+        return $this->idprod;
+    }
+
+    public function setIdprod(?Produit $idprod): self
+    {
+        $this->idprod = $idprod;
+
+        return $this;
+    }
+
 
 }

@@ -28,5 +28,22 @@ class Type
      */
     private $libelle;
 
+    public function getIdtype(): ?int
+    {
+        return $this->idtype;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
 
 }

@@ -59,5 +59,70 @@ class Reservation
      */
     private $idclient;
 
+    public function getIdreserv(): ?int
+    {
+        return $this->idreserv;
+    }
+
+    public function getDatereserv(): ?\DateTimeInterface
+    {
+        return $this->datereserv;
+    }
+
+    public function setDatereserv(\DateTimeInterface $datereserv): self
+    {
+        $this->datereserv = $datereserv;
+
+        return $this;
+    }
+
+    public function getNbcouvert(): ?int
+    {
+        return $this->nbcouvert;
+    }
+
+    public function setNbcouvert(int $nbcouvert): self
+    {
+        $this->nbcouvert = $nbcouvert;
+
+        return $this;
+    }
+
+    public function getHeurearrive(): ?\DateTimeInterface
+    {
+        return $this->heurearrive;
+    }
+
+    public function setHeurearrive(\DateTimeInterface $heurearrive): self
+    {
+        $this->heurearrive = $heurearrive;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Client
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Client $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
 
 }

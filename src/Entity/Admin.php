@@ -31,5 +31,29 @@ class Admin
      */
     private $idPers;
 
+    public function getNomuser(): ?string
+    {
+        return $this->nomuser;
+    }
+
+    public function setNomuser(?string $nomuser): self
+    {
+        $this->nomuser = $nomuser;
+
+        return $this;
+    }
+
+    public function getIdPers(): ?Personne
+    {
+        return $this->idPers;
+    }
+
+    public function setIdPers(?Personne $idPers): self
+    {
+        $this->idPers = $idPers;
+
+        return $this;
+    }
+
 
 }

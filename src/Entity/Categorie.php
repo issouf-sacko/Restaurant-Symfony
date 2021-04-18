@@ -28,5 +28,22 @@ class Categorie
      */
     private $libelle;
 
+    public function getIdcat(): ?int
+    {
+        return $this->idcat;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
 
 }

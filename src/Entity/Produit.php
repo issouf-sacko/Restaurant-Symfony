@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Produit
  *
- * @ORM\Table(name="produit")
+ * @ORM\Table(name="produit", indexes={@ORM\Index(name="I_FK_ProduitCategorie", columns={"idCat"})})
  * @ORM\Entity
  */
 class Produit
@@ -36,6 +36,16 @@ class Produit
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
     private $photo;
+
+    /**
+     * @var \Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCat", referencedColumnName="idCat")
+     * })
+     */
+    private $idcat;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -85,6 +95,18 @@ class Produit
     public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getIdcat(): ?Categorie
+    {
+        return $this->idcat;
+    }
+
+    public function setIdcat(?Categorie $idcat): self
+    {
+        $this->idcat = $idcat;
 
         return $this;
     }

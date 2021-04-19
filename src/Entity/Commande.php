@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commande
  *
- * @ORM\Table(name="commande", indexes={@ORM\Index(name="I_FK_commande_client", columns={"id_Client"})})
+ * @ORM\Table(name="commande", indexes={@ORM\Index(name="I_FK_commande_client", columns={"idClient"})})
  * @ORM\Entity
  */
 class Commande
@@ -35,10 +35,10 @@ class Commande
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_Client", referencedColumnName="id_Pers")
+     *   @ORM\JoinColumn(name="idClient", referencedColumnName="idClient")
      * })
      */
-    private $idClient;
+    private $idclient;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -72,14 +72,14 @@ class Commande
         return $this;
     }
 
-    public function getIdClient(): ?Client
+    public function getIdclient(): ?Client
     {
-        return $this->idClient;
+        return $this->idclient;
     }
 
-    public function setIdClient(?Client $idClient): self
+    public function setIdclient(?Client $idclient): self
     {
-        $this->idClient = $idClient;
+        $this->idclient = $idclient;
 
         return $this;
     }

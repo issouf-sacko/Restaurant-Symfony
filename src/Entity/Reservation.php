@@ -22,6 +22,13 @@ class Reservation
     private $idreserv;
 
     /**
+     * @var int|null
+     *
+     * @ORM\Column(name="idClient", type="integer", nullable=true)
+     */
+    private $idclient;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateReserv", type="date", nullable=false)
@@ -49,19 +56,21 @@ class Reservation
      */
     private $email;
 
-    /**
-     * @var \Client
-     *
-     * @ORM\ManyToOne(targetEntity="Client")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idClient", referencedColumnName="id_Pers")
-     * })
-     */
-    private $idclient;
-
     public function getIdreserv(): ?int
     {
         return $this->idreserv;
+    }
+
+    public function getIdclient(): ?int
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?int $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
     }
 
     public function getDatereserv(): ?\DateTimeInterface
@@ -108,18 +117,6 @@ class Reservation
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getIdclient(): ?Client
-    {
-        return $this->idclient;
-    }
-
-    public function setIdclient(?Client $idclient): self
-    {
-        $this->idclient = $idclient;
 
         return $this;
     }

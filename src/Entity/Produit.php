@@ -31,18 +31,18 @@ class Produit
     private $libelle;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     */
-    private $photo;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=false)
      */
     private $prix;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
 
     /**
      * @var \Categorie
@@ -68,6 +68,8 @@ class Produit
      * )
      */
     private $idcmd;
+    
+    private $photo;
 
     /**
      * Constructor
@@ -94,18 +96,6 @@ class Produit
         return $this;
     }
 
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(?string $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
     public function getPrix(): ?float
     {
         return $this->prix;
@@ -114,6 +104,18 @@ class Produit
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -153,5 +155,38 @@ class Produit
 
         return $this;
     }
+    
+    function getPhoto() {
+        return $this->photo;
+    }
+
+    function setPhoto($photo): void {
+        $this->photo = $photo;
+    }
+
+    public function __toString() {
+        return $this->libelle.' '.$this->prix.' '.$this->image;
+    }
+
+        /*
+     * $file = $produit->getImage();
+            $fileName = $produit->getLibelle().'.'.$file->guessExtension();
+            // deplacer l'image 
+            
+            try {
+                $file->move(
+                $this->getParameter('images_directory'),
+                        $fileName
+                        );
+            } catch (Exception $ex) {
+                
+            }
+            
+            
+            $entityManager = $this->getDoctrine()->getManager();
+            $produit->setImage($fileName);
+            $entityManager->persist($produit);
+            $entityManager->flush();
+     */
 
 }

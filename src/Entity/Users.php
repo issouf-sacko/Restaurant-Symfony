@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Users
@@ -10,16 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="nomUtilisateur", columns={"nomUtilisateur"})})
  * @ORM\Entity
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idUser;
+    private $id;
 
     /**
      * @var string|null
@@ -42,9 +43,29 @@ class Users
      */
     private $role;
 
-    public function getIdUser(): ?int
+    public function eraseCredentials() {
+        
+    }
+
+    public function getPassword() {
+        
+    }
+
+    public function getRoles() {
+        
+    }
+
+    public function getSalt() {
+        
+    }
+
+    public function getUsername(): string {
+        
+    }
+
+    public function getId(): ?int
     {
-        return $this->idUser;
+        return $this->id;
     }
 
     public function getNomutilisateur(): ?string
@@ -82,6 +103,5 @@ class Users
 
         return $this;
     }
-
 
 }

@@ -15,11 +15,11 @@ class Admin
     /**
      * @var int
      *
-     * @ORM\Column(name="id_Pers", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idPers;
+    private $id;
 
     /**
      * @var string|null
@@ -28,9 +28,16 @@ class Admin
      */
     private $nomuser;
 
-    public function getIdPers(): ?int
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="email", type="string", length=60, nullable=true)
+     */
+    private $email;
+
+    public function getId(): ?int
     {
-        return $this->idPers;
+        return $this->id;
     }
 
     public function getNomuser(): ?string
@@ -41,6 +48,18 @@ class Admin
     public function setNomuser(?string $nomuser): self
     {
         $this->nomuser = $nomuser;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

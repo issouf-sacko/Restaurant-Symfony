@@ -68,8 +68,6 @@ class Produit
      * )
      */
     private $idcmd;
-    
-    private $photo;
 
     /**
      * Constructor
@@ -77,6 +75,16 @@ class Produit
     public function __construct()
     {
         $this->idcmd = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    private $photo;
+    
+    function getPhoto() {
+        return $this->photo;
+    }
+
+    function setPhoto($photo): void {
+        $this->photo = $photo;
     }
 
     public function getIdprod(): ?int
@@ -155,38 +163,8 @@ class Produit
 
         return $this;
     }
+
+
     
-    function getPhoto() {
-        return $this->photo;
-    }
-
-    function setPhoto($photo): void {
-        $this->photo = $photo;
-    }
-
-    public function __toString() {
-        return $this->libelle.' '.$this->prix.' '.$this->image;
-    }
-
-        /*
-     * $file = $produit->getImage();
-            $fileName = $produit->getLibelle().'.'.$file->guessExtension();
-            // deplacer l'image 
-            
-            try {
-                $file->move(
-                $this->getParameter('images_directory'),
-                        $fileName
-                        );
-            } catch (Exception $ex) {
-                
-            }
-            
-            
-            $entityManager = $this->getDoctrine()->getManager();
-            $produit->setImage($fileName);
-            $entityManager->persist($produit);
-            $entityManager->flush();
-     */
 
 }

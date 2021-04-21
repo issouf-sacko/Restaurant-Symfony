@@ -5,35 +5,40 @@
 {% block body %}
     <h1>Produit index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Idprod</th>
-                <th>Libelle</th>
-                <th>Prix</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for produit in produits %}
-            <tr>
-                <td>{{ produit.idprod }}</td>
-                <td>{{ produit.libelle }}</td>
-                <td>{{ produit.prix }}</td>
-                <td>{{ produit.image }}</td>
-                <td>
-                    <a href="{{ path('produit_show', {'idprod': produit.idprod}) }}">show</a>
-                    <a href="{{ path('produit_edit', {'idprod': produit.idprod}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
 
-    <a href="{{ path('produit_new') }}">Create new</a>
-{% endblock %}
+        <div class="row">
+            <div class="col"> <h1 class="text-center text-danger"> Nos plats </h1></div>
+        </div>
+        <div class="row justify-content-center">
+
+            {% for produit in produits %}
+
+                <div class='card text-center m-3' style='width: 15rem;'>
+                    <img class='card-img-top' src="{{ asset('images/'~produit.image) }}">
+                    <div class='card-body'>
+                        <h5 class='card-title text-danger'>{{ produit.libelle }}</h5>
+                        <p class='card-text'> {{ produit.prix }} €</p>
+                        <a id='mywish' href="{{ path('produit_show', {'idprod': produit.idprod}) }}" class='btn btn-danger'>Afficher</a>
+                        <a id='mywish' href="{{ path('produit_show', {'idprod': produit.idprod}) }}" class='btn btn-danger'>Modifier</a>
+
+                    </div>
+                </div>
+
+
+
+
+
+                       
+                    {% else %}
+                        
+                            <h2>Pas de produit</h2>
+                        
+                    {% endfor %}
+                    </div>
+
+                    </div>
+
+                
+                <a href="{{ path('produit_new') }}">Ajouter un produit</a>
+        {% endblock %}

@@ -28,26 +28,22 @@ class Categorie
      */
     private $libelle;
 
-    
-     public function __toString() {
+    public function getIdcat(): ?int
+    {
+        return $this->idcat;
+    }
+
+    public function getLibelle(): ?string
+    {
         return $this->libelle;
     }
 
-     public function getIdcat(): ?int
-     {
-         return $this->idcat;
-     }
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
 
-     public function getLibelle(): ?string
-     {
-         return $this->libelle;
-     }
+        return $this;
+    }
 
-     public function setLibelle(string $libelle): self
-     {
-         $this->libelle = $libelle;
-
-         return $this;
-     }
 
 }

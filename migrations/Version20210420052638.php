@@ -20,7 +20,6 @@ final class Version20210420052638 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE admin CHANGE id_Pers id_Pers INT AUTO_INCREMENT NOT NULL');
         $this->addSql('ALTER TABLE commande CHANGE idClient idClient INT DEFAULT NULL');
         $this->addSql('ALTER TABLE produit DROP FOREIGN KEY FK_produit_categorie');
         $this->addSql('ALTER TABLE produit ADD photo VARCHAR(255) DEFAULT NULL, CHANGE idCat idCat INT DEFAULT NULL');

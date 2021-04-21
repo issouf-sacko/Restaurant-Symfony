@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,11 +15,11 @@ class Produit
     /**
      * @var int
      *
-     * @ORM\Column(name="idProd", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idprod;
+    private $id;
 
     /**
      * @var string|null
@@ -45,6 +43,13 @@ class Produit
     private $image;
 
     /**
+     * @var bool|null
+     *
+     * @ORM\Column(name="rupture", type="boolean", nullable=true)
+     */
+    private $rupture = '0';
+
+    /**
      * @var \Categorie
      *
      * @ORM\ManyToOne(targetEntity="Categorie")
@@ -54,42 +59,9 @@ class Produit
      */
     private $idcat;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idprod")
-     * @ORM\JoinTable(name="produitcommande",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="idProd", referencedColumnName="idProd")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idCmd", referencedColumnName="idCmd")
-     *   }
-     * )
-     */
-    private $idcmd;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId(): ?int
     {
-        $this->idcmd = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    private $photo;
-    
-    function getPhoto() {
-        return $this->photo;
-    }
-
-    function setPhoto($photo): void {
-        $this->photo = $photo;
-    }
-
-    public function getIdprod(): ?int
-    {
-        return $this->idprod;
+        return $this->id;
     }
 
     public function getLibelle(): ?string
@@ -128,6 +100,18 @@ class Produit
         return $this;
     }
 
+    public function getRupture(): ?bool
+    {
+        return $this->rupture;
+    }
+
+    public function setRupture(?bool $rupture): self
+    {
+        $this->rupture = $rupture;
+
+        return $this;
+    }
+
     public function getIdcat(): ?Categorie
     {
         return $this->idcat;
@@ -140,31 +124,5 @@ class Produit
         return $this;
     }
 
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getIdcmd(): Collection
-    {
-        return $this->idcmd;
-    }
-
-    public function addIdcmd(Commande $idcmd): self
-    {
-        if (!$this->idcmd->contains($idcmd)) {
-            $this->idcmd[] = $idcmd;
-        }
-
-        return $this;
-    }
-
-    public function removeIdcmd(Commande $idcmd): self
-    {
-        $this->idcmd->removeElement($idcmd);
-
-        return $this;
-    }
-
-
-    
 
 }

@@ -2,14 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Commande
  *
- * @ORM\Table(name="commande", indexes={@ORM\Index(name="I_FK_commande_client", columns={"idClient"})})
+ * @ORM\Table(name="commande", indexes={@ORM\Index(name="FK_reservation_client", columns={"idClient"})})
  * @ORM\Entity
  */
 class Commande
@@ -17,11 +15,11 @@ class Commande
     /**
      * @var int
      *
-     * @ORM\Column(name="idCmd", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idcmd;
+    private $id;
 
     /**
      * @var \DateTime
@@ -35,29 +33,14 @@ class Commande
      *
      * @ORM\ManyToOne(targetEntity="Client")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idClient", referencedColumnName="idClient")
+     *   @ORM\JoinColumn(name="idClient", referencedColumnName="id")
      * })
      */
     private $idclient;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Produit", mappedBy="idcmd")
-     */
-    private $idprod;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId(): ?int
     {
-        $this->idprod = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function getIdcmd(): ?int
-    {
-        return $this->idcmd;
+        return $this->id;
     }
 
     public function getDatecmd(): ?\DateTimeInterface
@@ -84,31 +67,5 @@ class Commande
         return $this;
     }
 
-    /**
-     * @return Collection|Produit[]
-     */
-    public function getIdprod(): Collection
-    {
-        return $this->idprod;
-    }
-
-    public function addIdprod(Produit $idprod): self
-    {
-        if (!$this->idprod->contains($idprod)) {
-            $this->idprod[] = $idprod;
-            $idprod->addIdcmd($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdprod(Produit $idprod): self
-    {
-        if ($this->idprod->removeElement($idprod)) {
-            $idprod->removeIdcmd($this);
-        }
-
-        return $this;
-    }
 
 }

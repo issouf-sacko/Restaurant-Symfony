@@ -13,20 +13,20 @@ use Doctrine\ORM\Mapping as ORM;
 class Client
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=50, nullable=false)
      */
     private $adresse;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idClient", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idclient;
 
     /**
      * @var string
@@ -49,6 +49,11 @@ class Client
      */
     private $email;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getAdresse(): ?string
     {
         return $this->adresse;
@@ -59,11 +64,6 @@ class Client
         $this->adresse = $adresse;
 
         return $this;
-    }
-
-    public function getIdclient(): ?int
-    {
-        return $this->idclient;
     }
 
     public function getNom(): ?string

@@ -15,11 +15,11 @@ class Reservation
     /**
      * @var int
      *
-     * @ORM\Column(name="idReserv", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idreserv;
+    private $id;
 
     /**
      * @var int|null
@@ -56,9 +56,9 @@ class Reservation
      */
     private $email;
 
-    public function getIdreserv(): ?int
+    public function getId(): ?int
     {
-        return $this->idreserv;
+        return $this->id;
     }
 
     public function getIdclient(): ?int

@@ -1,8 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'headerAdmin.html.twig' %}
 
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
+    {% block  header %}
+        {{ parent() }}
+    {% endblock %}
     <h1>Produit index</h1>
 
     <div class="container">

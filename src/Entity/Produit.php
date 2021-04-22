@@ -125,4 +125,20 @@ class Produit
     }
 
 
+    private $photo;
+    
+    function getPhoto() {
+        return $this->photo;
+    }
+
+    function setPhoto($photo): void {
+        $this->photo = $photo;
+    }
+
+
+    public function __toString() {
+        
+        return $this->libelle.' '. $this->prix;
+    }
+
 }

@@ -35,7 +35,6 @@ final class Version20210420052638 extends AbstractMigration
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE admin CHANGE id_Pers id_Pers INT NOT NULL');
         $this->addSql('ALTER TABLE commande CHANGE idClient idClient INT NOT NULL');
         $this->addSql('ALTER TABLE produit DROP FOREIGN KEY FK_29A5EC27BF165E2F');
         $this->addSql('ALTER TABLE produit DROP photo, CHANGE idCat idCat INT NOT NULL');
